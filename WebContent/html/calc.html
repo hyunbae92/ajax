@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="number" id="num1">
+<select id="op">
+	<option value="+">더하기</option>
+	<option value="-">빼기</option>
+	<option value="/">나누기</option>
+	<option value="*">곱하기</option>
+</select>
+<input type="number" id="num2">
+<button onclick="calc()">계산</button>
+<div id="rDiv">결과 : 0</div>
+<script>
+	function calc() {
+		var xhr = new XMLHttpRequest();
+		var num1 = document.querySelector('#num1').value;
+		var num2 = document.querySelector('#num2').value;
+		var op = document.querySelector('#op').value;
+		var url = '/calc?num1=' + num1 + '&num2=' + num2 + '&op='
+				+ encodeURIComponent(op);
+		xhr.open('GET', url);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+					document.querySelector('#rDiv').innerText = '결과 : '+ xhr.responseText;				
+			}
+
+		}
+		xhr.send();
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="number" id="num1">
+<input type="number" id="num2">
+<div id="rDiv">결과 : 0</div>
+<button onclick="plus()">더하기!!!</button>
+<script>
+function plus(){
+	var num1 = document.querySelector('#num1').value;
+	var num2 = document.querySelector('#num2').value;
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','/test?list=true&num1='+num1+'&num2='+num2);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4){
+			document.querySelector('#rDiv').innerText = '결과 : '+xhr.responseText;
+		}
+	}
+	xhr.send();
+}
+</script>
+</body>
+</html>
