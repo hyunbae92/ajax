@@ -9,10 +9,10 @@
 </head>
 <body>
 	ajax index화면입니다!람쥐 
-<c:if test="${sessionScope.id == null}">
-<a href="/views/login"><button>로그인</button></a>
+<c:if test="${sessionScope.user == null}">
+<a href="/views/user/login"><button>로그인</button></a>
 </c:if>
-<c:if test="${sessionScope.id != null}">
+<c:if test="${sessionScope.user != null}">
 <button onclick="doLogout()">로그아웃</button>
 </c:if>
 <script>
